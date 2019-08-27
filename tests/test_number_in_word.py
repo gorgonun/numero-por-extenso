@@ -6,6 +6,20 @@ HERE = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(HERE, "../"))
 import number_to_word
 
+def test_support_current_limit():
+    limit = 999999
+    assert "999999" == number_to_word.convert_to_current_limit(limit)
+
+def test_raise_error_with_not_supported_number():
+    number = 1e6
+    with pytest.raises(number_to_word.NumberNotSupported):
+        number_to_word.convert_to_current_limit(number)
+
+def test_separated_rules():
+    number = "000333"
+    expected = [000, 3, 33]
+    assert expected == number_to_word.separate_by_conversion_rule(number)
+
 # TODO: finish testing
 def test_correct_ten_unity_to_word():
     numbers = (0, 1, 10, 15, 20, 26, 40, 67, 99)

@@ -1,5 +1,5 @@
 # numero-por-extenso
-Este projeto tem como objetivo a conversão de números para sua versão por extenso.
+Este projeto tem como objetivo a conversão de números para sua versão por extenso. Suporta números até 999 999
 
 ## Requisitos
 - python3.6
