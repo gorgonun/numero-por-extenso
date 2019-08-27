@@ -1,11 +1,11 @@
 # numero-por-extenso
 Este projeto tem como objetivo a conversão de números para sua versão por extenso.
 
-# Requisitos
+## Requisitos
 - python3.6
 - pytest
 
-# Uso
+## Uso
 ```
 python3 number_to_word.py numero
 ```
