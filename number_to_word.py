@@ -43,10 +43,10 @@ numbers = {
 
 def convert_to_suported(num):
     number = str(num)
-    return number.zfill(5)
+    return number.zfill(6)
 
 def separate_by_conversion_rule(str_num):
-    return [int(str_num[:2]), int(str_num[2]), int(str_num[3:])]
+    return [int(str_num[:3]), int(str_num[3]), int(str_num[4:])]
 
 def ten_unity_to_word(ten_unity_number, concat=False):
     if ten_unity_number <= 20:
@@ -64,15 +64,12 @@ def hundred_to_word(hundred_number, concat):
 def thousand_to_word(thousand_number, concat):
     if thousand_number > 1:
         thousand_str = convert_to_word(thousand_number)
-        return f"{thousand_str} mil e " if concat else thousand_str + " mil"
+        return f"{thousand_str} mil " if concat else f"{thousand_str} mil"
     else:
-        return f"{numbers[1000]} e " if concat else numbers[1000]
+        return f"{numbers[1000]} " if concat else numbers[1000]
 
 def check_concat(number):
-    if number <= 9:
-        return False
-    number = str(number)
-    return int(number[-1]) > 0
+    return number > 0
 
 def remove_zeros(word_list):
     if len(word_list) > 1:

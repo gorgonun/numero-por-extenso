@@ -24,8 +24,8 @@ def test_correct_hundred_to_word():
         i += 1
 
 def test_check_concat():
-    numbers = (1, 5, 10, 14, 21, 56, 72)
-    result = (False, False, False, True, True, True, True)
+    numbers = (0, 1, 5, 10)
+    result = (False, True, True, True)
     i = 0
     for number in numbers:
         assert number_to_word.check_concat(number) == result[i]
@@ -33,8 +33,18 @@ def test_check_concat():
 
 def test_correct_thousand_to_word():
     numbers = ((1, False), (1, True), (5, True), (7, False), (10, True), (234, False), (999, True))
-    word = ("mil", "mil e ", "cinco mil e ", "sete mil", "dez mil e ", "duzentos e trinta e quatro mil", "novecentos e noventa e nove mil e ")
+    word = ("mil", "mil ", "cinco mil ", "sete mil", "dez mil ", "duzentos e trinta e quatro mil", "novecentos e noventa e nove mil ")
     i = 0
     for number in numbers:
         assert number_to_word.thousand_to_word(*number) == word[i]
+        i += 1
+
+def test_correct_complete_conversion():
+    numbers = (100, 101, 302, 85484, 999654)
+    word = ("cem", "cento e um", "trezentos e dois",
+            "oitenta e cinco mil quatrocentos e oitenta e quatro",
+            "novecentos e noventa e nove mil seiscentos e cinquenta e quatro")
+    i = 0
+    for number in numbers:
+        assert number_to_word.convert_to_word(number) == word[i]
         i += 1
